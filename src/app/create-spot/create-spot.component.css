@@ -1,0 +1,86 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+
+
+
+ext {
+    font-size: 20px;
+    text-anchor: middle;
+    dominant-baseline: central;
+}
+
+.spots {
+
+}
+
+.container {
+    position: relative;
+    height: 300px;
+    margin: auto;
+}
+
+/*.kompass,*/
+/*.map {*/
+/*    position: absolute;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*}*/
+
+/*.kompass {*/
+/*    z-index: 1;*/
+/*}*/
+
+/*.map {*/
+/*    width: 300px;*/
+/*    height: 300px;*/
+
+/*}*/
+
+
+.kompass {
+    position: absolute;
+    top: 0;
+    left: 30%;
+    /*right: 30%;*/
+    z-index: 1;
+}
+
+.map iframe {
+    position: absolute;
+    top: 0;
+    left: 30%;
+    width: 300px;
+    height: 300px;
+    border: none;
+}
+
+.caption {
+    fill: red;
+    font-size: 24px;
+    font-weight: bold;
+    text-anchor: middle;
+    dominant-baseline: central;
+}
+
+
+
+
+
+
+
+
+
+
+.form {
+    height: 500px
+}
+
+
+
+
+
+
+
+

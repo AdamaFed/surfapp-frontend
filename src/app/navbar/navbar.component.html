@@ -1,0 +1,71 @@
+<nav class="bg-gray-900">
+  <div class="max-w-screen-xl mx-auto px-4">
+    <div class="flex justify-between items-center py-3">
+      <a href="/" class="flex items-center space-x-0 rtl:space-x-reverse">
+       <img src="/assets/images/logo.svg" class="h-12 w-12" alt="Logo" />
+         <img src="../../assets/images/LogoText.png" style="height: 30px;"/>
+         <!--       <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">SurfAssistant-->
+
+      </a>
+
+      <div class="hidden custom-md-flex items-center justify-center flex-1">
+        <ul class="flex justify-center space-x-8">
+          <li><a routerLink="/assistant" class="nav-link" routerLinkActive="active-link">Assistant</a></li>
+          <li><a routerLink="/spot-forecast" class="nav-link" routerLinkActive="active-link">Spot Forecast</a></li>
+          <li><a routerLink="/list" class="nav-link" routerLinkActive="active-link">Spots</a></li>
+          <li><a routerLink="/feedback-list" class="nav-link" routerLinkActive="active-link">Feedback</a></li>
+          <li><a routerLink="/admin" class="nav-link" routerLinkActive="active-link">Admin</a></li>
+        </ul>
+      </div>
+
+      <div class="hidden custom-md-flex items-center space-x-3">
+        <button *ngIf="user.username" class="nav-link2 rounded-full bg-white px-4 py-2 text-gray-800 transition duration-200 ease-in-out hover:bg-gray-100" onclick="gpt.showModal()"> Help</button>
+        <a *ngIf="!user.username" routerLink="/registration" class="nav-link2 rounded-full bg-white px-4 py-2 text-gray-800 transition duration-200 ease-in-out hover:bg-gray-100" routerLinkActive="active-link">Register</a>
+        <a *ngIf="!user.username" routerLink="/login" class="nav-link2 rounded-full bg-white px-4 py-2 text-gray-800 transition duration-200 ease-in-out hover:bg-gray-100" routerLinkActive="active-link">Login</a>
+        <button *ngIf="user.username" class="nav-link2 rounded-full bg-white px-4 py-2 text-gray-800 transition duration-200 ease-in-out hover:bg-gray-100" routerLinkActive="active-link" mat-button (click)="openLogoutConfirmationDialog()">Logout</button>
+         </div>
+
+      <button data-collapse-toggle="navbar-default" type="button" class="hidden hamburger-menu inline-flex items-center p-2 w-10 h-10  text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" (click)="toggleMenu()" aria-controls="navbar-default" aria-expanded="false">
+        <svg class="w-5 h-5" aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="hidden hamburger-menu" id="navbar-default" *ngIf="isMenuOpen">
+      <ul class="flex flex-col py-0.5 mt-4 gap-y-2  rounded-lg">
+        <li><a routerLink="/assistant" class="nav-link" routerLinkActive="active-link">Assistant</a></li>
+        <li><a routerLink="/spot-forecast" class="nav-link" routerLinkActive="active-link">Spot Forecast</a></li>
+        <li><a routerLink="/list" class="nav-link" routerLinkActive="active-link">Spots</a></li>
+        <li><a routerLink="/feedback-list" class="nav-link" routerLinkActive="active-link">Feedback</a></li>
+        <li *ngIf="user.roles==='ADMIN'"><a routerLink="/admin" class="nav-link" routerLinkActive="active-link">Admin</a></li>
+        <li *ngIf="!user.username"><a routerLink="/registration" class="nav-link3" routerLinkActive="active-link">Register</a></li>
+        <li *ngIf="!user.username"><a routerLink="/login" class="nav-link3" routerLinkActive="active-link">Login</a></li>
+        <li *ngIf="user.username">><button class="nav-link3" mat-button (click)="openLogoutConfirmationDialog()">Log Out</button></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<dialog class="w-1/2 h-1/2 dialog" id="gpt">
+  <button class="absolute right-5" onclick="gpt.close()">x</button>
+  <app-chat></app-chat>
+</dialog>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

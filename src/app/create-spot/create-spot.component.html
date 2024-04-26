@@ -1,0 +1,174 @@
+<!--<div class="spots">-->
+<!--  <div class="form">-->
+
+
+<!--    <form [formGroup]="newSpotForm" (ngSubmit)="onSubmit()">-->
+
+<!--      <div>-->
+<!--        <Label for="name">-->
+<!--          Spotname-->
+<!--        </Label>-->
+<!--        <br>-->
+<!--        <input id="name" type="text" formControlName="name">-->
+<!--        <button type="button" (click)="getLongLat()"> Find Geodata</button>-->
+<!--      </div>-->
+
+<!--      <div>-->
+<!--        <Label for="longitude">-->
+<!--          Longitude:-->
+<!--        </Label>-->
+<!--        <br>-->
+<!--        <input id="longitude" type="text" formControlName="longitude">-->
+<!--      </div>-->
+<!--      <div>-->
+<!--        <Label for="latitude">-->
+<!--          Latitude:-->
+<!--        </Label>-->
+<!--        <br>-->
+<!--        <input id="latitude" type="text" formControlName="latitude">-->
+<!--      </div>-->
+
+<!--      <div>-->
+<!--        <Label for="facing">-->
+<!--          Facing Direction: <span style="color: red"> (You have to Enter the right facing!) </span>-->
+<!--        </Label>-->
+<!--        <br>-->
+<!--        <input id="facing" type="text" formControlName="facing">-->
+<!--      </div>-->
+<!--      <button class="button" type="submit"> Create Spot</button>-->
+<!--      <div class="container">-->
+<!--        <div class="kompass">-->
+<!--          <svg width="300" height="300">-->
+<!--            <circle cx="150" cy="150" r="120" stroke="red" stroke-width="2" fill="transparent"></circle>-->
+<!--            <line *ngFor="let degree of degrees" [attr.x1]="lineX1(degree)" [attr.y1]="lineY1(degree)"-->
+<!--                  [attr.x2]="lineX2(degree)" [attr.y2]="lineY2(degree)" stroke="red" stroke-width="2"></line>-->
+<!--            <text class="caption" *ngFor="let degree of degreeLabels" [attr.x]="textX(degree)-10"-->
+<!--                  [attr.y]="textY(degree)+10">-->
+<!--              {{ degree }}°-->
+<!--            </text>-->
+<!--          </svg>-->
+<!--        </div>-->
+<!--        <div class="map">-->
+<!--          <iframe class="map" style="border:0" loading="lazy" allowfullscreen-->
+<!--                  referrerpolicy="no-referrer-when-downgrade" [src]="mapUrl"></iframe>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--    </form>-->
+<!--  </div>-->
+<!--</div>-->
+
+<div class="flex justify-center  space-x-4  bg-gray-900">
+
+  <div class="form bg-gray-800 p-6 rounded-lg shadow-lg  ml-80 my-8">
+    <form [formGroup]="newSpotForm" (ngSubmit)="onSubmit()">
+      <div class="mb-4">
+        <label for="name" class="block text-sm font-medium text-white">Spotname</label>
+        <input id="name" type="text" formControlName="name" class="shadow-sm bg-gray-700 border border-gray-600 text-white rounded-lg block w-full p-2.5" required>
+      </div>
+
+      <div class="mb-4">
+        <label for="longitude" class="block text-sm font-medium text-white">Longitude:</label>
+        <input id="longitude" type="text" formControlName="longitude" class="shadow-sm bg-gray-700 border border-gray-600 text-white rounded-lg block w-full p-2.5" required>
+      </div>
+
+      <div class="mb-4">
+        <label for="latitude" class="block text-sm font-medium text-white">Latitude:</label>
+        <input id="latitude" type="text" formControlName="latitude" class="shadow-sm bg-gray-700 border border-gray-600 text-white rounded-lg block w-full p-2.5" required>
+      </div>
+
+      <div class="mb-6">
+        <label for="facing" class="block text-sm font-medium text-white">
+          Facing Direction: <span class="text-red-500">(You have to Enter the right facing!)</span>
+        </label>
+        <input id="facing" type="text" formControlName="facing" class="shadow-sm bg-gray-700 border border-gray-600 text-white rounded-lg block w-full p-2.5" required>
+      </div>
+
+      <div class="flex justify-between items-center">
+        <button type="button" (click)="getLongLat()" class="text-white bg-black hover:bg-gray  font-medium rounded-lg text-sm px-5 py-2.5">Find Geodata</button>
+        <button type="submit" class="text-white bg-red-500 hover:bg-red-300  font-medium rounded-lg text-sm px-5 py-2.5">Create Spot</button>
+      </div>
+    </form>
+  </div>
+
+
+  <div class="container relative">
+    <div class="kompass">
+      <svg width="300" height="300">
+        <circle cx="150" cy="150" r="120" stroke="red" stroke-width="2" fill="transparent"></circle>
+        <line *ngFor="let degree of degrees" [attr.x1]="lineX1(degree)" [attr.y1]="lineY1(degree)"
+              [attr.x2]="lineX2(degree)" [attr.y2]="lineY2(degree)" stroke="red" stroke-width="2"></line>
+        <text class="caption" *ngFor="let degree of degreeLabels" [attr.x]="textX(degree)"
+              [attr.y]="textY(degree)">
+          {{ degree }}°
+        </text>
+      </svg>
+    </div>
+    <div class="map">
+      <iframe class="map" style="border:0" loading="lazy" allowfullscreen
+              referrerpolicy="no-referrer-when-downgrade" [src]="mapUrl"></iframe>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+<!--  <div>-->
+<!--    <h2> List of Spots </h2>-->
+<!--    <table>-->
+<!--      <tr>-->
+<!--        <td> Name</td>-->
+<!--        <td> Logitude</td>-->
+<!--        <td> Latitude</td>-->
+<!--        <td> Facing °</td>-->
+<!--      </tr>-->
+<!--      <tr *ngFor="let spot of spots">-->
+<!--        <td>-->
+<!--          {{spot.name}}-->
+<!--        </td>-->
+
+<!--        <td>-->
+<!--          {{spot.longitude}}-->
+<!--        </td>-->
+<!--        <td>-->
+<!--          {{spot.latitude}}-->
+<!--        </td>-->
+<!--        <td>-->
+<!--          {{spot.facing}}°-->
+<!--        </td>-->
+
+<!--      </tr>-->
+<!--    </table>-->
+
+<!--  </div>-->
+
+  <div class="bg-gray-800">
+    <h2 class="text-2xl text-white font-bold mb-4 ml-4 py-4 text-center">List of Spots</h2>
+    <table class="w-full table-fixed bg-gray-800 text-white">
+      <thead class="bg-gray-700">
+      <tr>
+        <th class="w-1/4 py-3 text-center">Name</th>
+        <th class="w-1/4 py-3 text-center">Longitude</th>
+        <th class="w-1/4 py-3 text-center">Latitude</th>
+        <th class="w-1/4 py-3 text-center">Facing °</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let spot of spots" class="border-b border-gray-700">
+        <td class="py-4 text-center">{{ spot.name }}</td>
+        <td class="py-4 text-center">{{ spot.longitude }}</td>
+        <td class="py-4 text-center">{{ spot.latitude }}</td>
+        <td class="py-4 text-center">{{ spot.facing }}°</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+
+

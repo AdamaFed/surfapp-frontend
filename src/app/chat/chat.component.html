@@ -1,0 +1,18 @@
+<br>
+<br>
+<div class="chat">
+  <div *ngFor="let text of chat">
+    <p style="background-color: grey; border-radius: 5px;"> {{text.content}}</p>
+
+  </div>
+  <form [formGroup]="newChatForm" (ngSubmit)="onSubmit()">
+    <div>
+      <Label for="content">
+        Text:
+      </Label>
+      <input id="content" type="text" formControlName="content">
+      <button class="button" type="submit"> Send </button>
+    </div>
+
+  </form>
+</div>

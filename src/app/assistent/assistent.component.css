@@ -1,0 +1,177 @@
+.allCards {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.card {
+  border: 2px solid grey;
+  border-radius: 15px;
+  width: 205px;
+  height: 450px;
+  margin-top: 10px;
+  margin-left: 10px;
+  gap: 10px;
+}
+
+.date {
+  padding-bottom: 10px;
+  font-size: 24px;
+  margin-top: 15px;
+  width: 100%;
+
+  /*border-bottom: 2px solid black;*/
+}
+
+.userFeedback {
+  margin-top: -50px;
+  padding-left: 6px;
+}
+
+#svg {
+  fill: #e8e8e8;
+
+}
+
+
+
+mat-sidenav {
+  width: 300px;
+  height: 100%; /* Adjust as needed */
+  overflow-y: auto;
+}
+
+mat-slide-toggle {
+  margin: 10px 0;
+}
+
+mat-tab-group {
+
+}
+
+mat-sidenav-content {
+  overflow-y: auto;
+  height: 100vh;
+
+
+}
+
+mat-sidenav{
+  flex-flow: column;
+  text-align: center;
+  color: #e8e8e8;
+}
+mat-tab-group{
+  flex-flow: column;
+  text-align: center;
+color: #e8e8e8;
+}
+
+
+
+.main-chart {
+  width: 300px;
+  height: 400px;
+}
+.filter-chart {
+  width: 1000px;
+  height: 400px;
+}
+
+/*.main-card {*/
+/*  !*position: relative;*!*/
+/*  display: flex;*/
+/*  flex-flow: column;*/
+/*  padding: 10px;*/
+/*  border-radius: 10px;*/
+/*  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
+
+/*  !*background-color: rgb(245, 245, 245, .5);*!*/
+/*  margin: 15px;*/
+/*  !*width: 80%;*!*/
+/*  !*display: flex;*!*/
+/*  !*flex-flow: row wrap;*!*/
+/*  !*justify-content: center;*!*/
+/*  color: black;*/
+/*}*/
+
+/*.tile {*/
+/*  display: flex;*/
+/*  flex-flow: column;*/
+/*  color: #ffffff;*/
+/*  text-align: center;*/
+/*  background-color: rgb(66, 59, 59);*/
+/*  border-radius: 10px;*/
+/*  padding: 10px;*/
+/*  margin: 5px 0;*/
+/*  !*position: relative;*!*/
+/*  !*border-bottom: solid black 1px;*!*/
+/*  !*box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.19);*!*/
+/*}*/
+
+
+.map {
+  width: 100%;
+  height: 250px;
+}
+.angular-google-map-container { height: 600px; }
+
+/*.flex-col {*/
+/*  flex-flow:  column;*/
+/*  justify-content: space-between;*/
+/*}*/
+
+@media (min-width: 768px) {
+/*  .main-card-head {*/
+/*    width: 100%;*/
+/*  }*/
+
+/*  .main-card {*/
+/*    margin: auto;*/
+/*    margin-bottom: 15px;*/
+/*    max-width: 1200px;*/
+
+/*    display: flex;*/
+/*    flex-flow: wrap row;*/
+/*    justify-content: space-between;*/
+/*  }*/
+
+/*  .tile {*/
+/*    display: flex;*/
+/*    flex-flow: column;*/
+/*    width: 48%;*/
+/*    !*margin: 0;*!*/
+/*    !*margin: 2px;*!*/
+/*    !*justify-content: stretch;*!*/
+/*    !*height: 100%;*!*/
+/*  }*/
+
+/*.fullCol{*/
+/*  flex-flow: column;*/
+/*  width: 100%;*/
+/*}*/
+}
+
+
+mat-sidenav-container {
+  background-color: rgb(17 24 39);
+}
+
+.custom-sidenav {
+  background-color: rgb(17 24 39);
+}
+
+.session-button {
+  background-color: white;
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 100px;
+}
+
+/* Add hover styles for the button (optional) */
+.session-button:hover {
+  background-color: rgb(128, 128, 128); /* Background color on hover */
+}

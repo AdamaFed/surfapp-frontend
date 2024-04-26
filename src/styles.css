@@ -1,0 +1,79 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/*mat-slider {*/
+/*  !*--mdc-slider-handle-color: yellow;*!*/
+/*  !*--mdc-slider-active-track-color: yellow;*!*/
+/*  !*--mat-mdc-slider-focus-ripple-color: green;*!*/
+/*  !*--mdc-slider-label-label-text-font: typewriter;*!*/
+/*  !*--mat-mdc-focus-indicator-display: 60px;*!*/
+/*  !*--mdc-slider-active-track-height: 60px;*!*/
+/*  !*--mdc-slider-handle-elevation: 80px;*!*/
+/*  !*--mdc-slider-label-label-text-size: 70px;*!*/
+/*  --mdc-slider-label-container-color: transparent;*/
+/*}*/
+
+
+
+:root {
+  --slider-color: rgb(206, 77, 149); /* Define your preferred color here */
+  --handle-size: 20px;
+}
+
+
+
+.ngx-slider-bar {
+  background: var(--slider-color) !important;
+
+  opacity: 0.2;
+
+}
+
+/*inner selection bar*/
+.ngx-slider-selection {
+  background: var(--slider-color) !important;
+  height: 4px !important;
+
+  opacity: 1;
+}
+
+/*values*/
+.ngx-slider-bubble {
+  color: rgb(255, 255, 255) !important;
+  font-size: 14px !important;
+}
+
+
+/*handle*/
+.ngx-slider .ngx-slider-pointer {
+height: var(--handle-size) !important;
+  width: var(--handle-size) !important;
+  /*top: 16px !important;*/
+  top: calc((var(--handle-size))/-2.8) !important;
+  /*left: calc(var(--handle-size) / 2) !important;*/
+
+  background: var(--slider-color) !important;
+}
+
+/*handle inner point*/
+.ngx-slider .ngx-slider-pointer:after {
+  display: none;
+  content: "";
+  width: 8px;
+  height: 8px;
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  border-radius: 4px;
+  background: #996868;
+}
+
+.ngx-slider {
+  width: 90% !important;
+  margin: 30px 0 8px !important;
+}
+
+

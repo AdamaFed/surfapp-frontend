@@ -1,0 +1,28 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+
+
+/*.container {*/
+
+/*    flex-wrap: wrap;*/
+
+/*}*/
+/*.giveFeedack {*/
+/*    border: 1px solid black;*/
+
+/*}*/
+
+/*.showFeedback {*/
+/*    border: 1px solid black;*/
+
+/*}*/
+
+/*.comment {*/
+/*    border: 1px solid black;*/
+/*}*/
+
+.compass-direction {
+    fill: white;
+}

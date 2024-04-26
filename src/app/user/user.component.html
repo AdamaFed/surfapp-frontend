@@ -1,0 +1,23 @@
+
+  <table class="table w-full">
+    <thead class=" text-white bg-gray-700 uppercase">
+    <tr>
+      <th class="w-1/3 py-3"> Username</th>
+      <th class="w-1/3"> Role</th>
+      <th class="w-1/3"> Action</th>
+    </tr>
+    </thead>
+    <tbody class="bg-gray-800">
+    <tr *ngFor="let user of users" class="border-b text-white">
+      <td class="py-4 text-center">{{user.username}}</td>
+      <td class="py-4 text-center">{{user.role}}</td>
+      <td class="py-4 text-center">
+        <button (click)="deleteUser(user.id)" class="text-white p-2 bg-red-400 font-medium rounded">DELETE</button>
+        <button (click)="updateUser(user.id)" class="text-white p-2 ml-4 bg-blue-400 font-medium rounded">PROMOTE/DEMOTE</button>
+      </td>
+    </tr>
+
+    </tbody>
+
+  </table>
+

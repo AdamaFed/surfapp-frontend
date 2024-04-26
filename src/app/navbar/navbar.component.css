@@ -1,0 +1,58 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+.dialog {
+  border-radius: 20px;
+}
+
+.nav-link {
+  padding: 2px 3px;
+  text-decoration: none;
+  color: white;
+}
+
+.nav-link:hover{
+  color: rgb(128, 128, 128);
+}
+
+.nav-link2{
+  text-decoration: none;
+}
+
+.nav-link2:hover{
+  color: white;
+}
+
+.nav-link3{
+  text-decoration: none;
+  color: white;
+}
+
+.nav-link3:hover{
+  color: black;
+}
+
+.active-link {
+  text-decoration: underline;
+}
+
+
+@media screen and (min-width: 860px){
+  /* Apply your styles here */
+  .custom-md-flex {
+    display: flex;
+  }
+
+}
+
+@media screen and (max-width: 870px) {
+  /* Hide the hamburger menu button when the screen width is below 860px */
+  .custom-md-flex {
+    display: none;
+  }
+  /* Show the hamburger menu button */
+  .hamburger-menu {
+    display: block;
+  }
+}

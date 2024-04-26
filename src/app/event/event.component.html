@@ -1,0 +1,45 @@
+<p>event works!</p>
+
+<div >
+  <div  *ngFor="let event of events">
+
+    <div >
+        <span>
+          {{event.name}}
+        </span>
+
+      <span>
+          {{event.description}}
+        </span>
+      <span>
+          {{event.date}}
+        </span>
+
+    </div>
+  </div>
+</div>
+
+<form [formGroup]="newEventForm" (ngSubmit)="onSubmit()">
+
+  <div>
+    <Label for="name">
+      Enter the Name of the Event:
+    </Label>
+    <input id="name" type="text" formControlName="name">
+  </div>
+  <div>
+    <Label for="description">
+      description
+    </Label>
+    <input id="description" type="text" formControlName="description">
+  </div>
+  <div>
+    <Label for="date">
+      Date
+    </Label>
+    <input id="date" type="text" formControlName="date">
+  </div>
+
+
+  <button class="button" type="submit"> erstellen </button>
+</form>

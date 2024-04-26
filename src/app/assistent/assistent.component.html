@@ -1,0 +1,184 @@
+<mat-sidenav-container>
+  <mat-sidenav #sidenav class="custom-sidenav" disableClose role="dialog" mode="side" [opened]="isSidenavOpened">
+    <div>
+      <div>
+        <mat-slide-toggle (change)="getCurrentPosition($event)" color="primary">Get your location</mat-slide-toggle>
+        &nbsp;&nbsp;
+        <!--location-->
+        <mat-form-field hintLabel="location">
+          <mat-label>location</mat-label>
+          <input matInput placeholder="Ex. Nougat" [(ngModel)]="location.name">
+          <mat-hint align="end" *ngIf="this.location && this.location.name"></mat-hint>
+        </mat-form-field>
+        <!-- Slider for radius-->
+        <ngx-slider [(value)]="radiusValue" [options]="radiusOptions"></ngx-slider>
+        <p>Within radius</p>
+        <mat-divider></mat-divider>
+      </div>
+    </div>
+    <div>
+      <!--      <mat-tab-group dynamicHeight mat-stretch-tabs="true" animationDuration="10ms">-->
+      <!--        <mat-tab>-->
+      <!--          <ng-template mat-tab-label>Kite & <br>Windsurfers</ng-template>-->
+      <mat-slide-toggle color="primary" [checked]="beginnersPreferencesActive"
+                        (change)="setBeginnersPreferences($event)">Beginners Preferences
+      </mat-slide-toggle>
+      <!-- Slider for Wind speed-->
+      <ngx-slider [(value)]="windMinValue" [(highValue)]="windMaxValue" [options]="windOptions"
+                  (userChange)="onSliderChange()"></ngx-slider>
+      <p>Wind speed</p>
+
+      <!-- Slider for Wave height-->
+      <ngx-slider [(value)]="waveMinValue" [(highValue)]="waveMaxValue" [options]="waveOptions"
+                  (userChange)="onSliderChange()"></ngx-slider>
+      <p>Wave height</p>
+
+      Low Tide
+      <mat-slide-toggle color="primary" [checked]="highTidePreferencesActive"
+                        (change)="setTidePreferences($event)"> High Tide
+      </mat-slide-toggle>
+      <ngx-slider [(value)]="range" [options]="rangeOptions"></ngx-slider>
+      <p>Tide within hours</p>
+      <!--        </mat-tab>-->
+
+      <!--        <mat-tab>-->
+      <!--          <ng-template mat-tab-label>Waveriders</ng-template>-->
+      <!--          <mat-slide-toggle>Beginners Preferences</mat-slide-toggle>-->
+
+      <!--          &lt;!&ndash; Slider for Wave height&ndash;&gt;-->
+      <!--&lt;!&ndash;          <ngx-slider [(value)]="waveMinValue" [(highValue)]="waveMaxValue" [options]="waveOptions"></ngx-slider>&ndash;&gt;-->
+      <!--          <p>Wave height</p>-->
+      <!--        </mat-tab>-->
+
+      <!--      </mat-tab-group>-->
+      <mat-divider></mat-divider>
+
+
+      <div>
+        <div>
+          <div>
+            <mat-divider></mat-divider>
+            <br>
+            <!--            <mat-slide-toggle>Anytime</mat-slide-toggle> &nbsp;&nbsp;-->
+
+            <ngx-slider [(value)]="dateMinValue" [(highValue)]="dateMaxValue" [options]="dateOptions"></ngx-slider>
+            <p>Date</p>
+
+            <ngx-slider [(value)]="hourMinValue" [(highValue)]="hourMaxValue" [options]="hourOptions"></ngx-slider>
+            <p>Time</p>
+
+
+          </div>
+
+          <!-- Fetch Data -->
+          <button (click)="filterDataOnClick()" class="session-button">Take me to my session!</button>
+
+        </div>
+      </div>
+
+
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+
+    <button mat-flat-button (click)="toggleSidenav()" class="sidenav-toggle">
+      {{ isSidenavOpened ? 'Close' : 'Assistent' }}
+    </button>
+
+    <!--    <echarts [initOpts]="initMainChartOpts" [options]="mainChartOption" class="main-chart"></echarts>-->
+
+
+    <!--    <echarts [initOpts]="initFilterChartOpts" [options]="filterChartOption" class="filter-chart"></echarts>-->
+
+
+    <div class="allCards" *ngFor="let weekChart of weekCharts">
+
+      <div class="date" *ngIf="weekChart[0]">
+         {{weekChart[0].date!}}
+      </div>
+
+
+      <div class="card" *ngFor="let chart of weekChart">
+
+        <div class="chart" *ngIf="chart.chartOption">
+          <echarts [initOpts]="initFilterChartOpts" [options]="chart.chartOption" class="filter-chart"></echarts>
+        </div>
+        <div class="userFeedback">
+          <a [title]="'Color = Rating, length = Windspeed, direction = Winddirection'" routerLink="/feedback">
+            <svg width="200" height="200">
+              <circle style="filter: blur(2px)" cx="100" cy="100" r="75" fill="lightgray"/>
+              <circle style="filter: blur(2px)" cx="100" cy="100" r="50" fill="gray"/>
+              <circle style="filter: blur(2px)" cx="100" cy="100" r="25" fill="black"/>
+              <line style="filter: blur(2px)"
+                    *ngFor="let condition of filterBySpotId(chart.spotId)"
+                    [attr.x1]="centerX"
+                    [attr.y1]="centerY"
+                    [attr.x2]="calculateX2(condition)"
+                    [attr.y2]="calculateY2(condition)"
+                    [style.stroke]="colorOf(condition)"
+                    stroke-width="7"
+              />
+              <text id="svg" *ngFor="let direction of compassDirections" [attr.x]="calculateLabelX(direction)-8"
+                    [attr.y]="calculateLabelY(direction)+5">
+                {{ direction }}
+              </text>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!--      <div class="f2">-->
+    <!--    <echarts [initOpts]="initFilterChartOpts" [options]="filterChartOption" class="filter-chart"></echarts>-->
+    <!--      </div>-->
+
+    <!--        <button (click)="updateChart()">Chart</button>-->
+
+
+    <!--    <table>-->
+    <!--      <thead>-->
+    <!--      <tr>-->
+    <!--        <th>Zeit</th>-->
+    <!--        <th>Windgeschwindigkeit</th>-->
+    <!--        <th>Windrichtung</th>-->
+    <!--        <th>Wellenhöhe</th>-->
+    <!--        <th>Wellenrichtung</th>-->
+    <!--      </tr>-->
+    <!--      </thead>-->
+    <!--      <tbody>-->
+    <!--      <tr *ngFor="let data of getFormattedDataForTable()">-->
+    <!--        <td>{{ data.time }}</td>-->
+    <!--        <td>{{ data.windSpeed }}</td>-->
+    <!--        <td>{{ data.windDirection }}</td>-->
+    <!--        <td>{{ data.waveHeight }}</td>-->
+    <!--        <td>{{ data.waveDirection }}</td>-->
+    <!--      </tr>-->
+    <!--      </tbody>-->
+    <!--    </table>-->
+
+    <!--    <h1>Gefiltert:</h1>-->
+    <!--    <table>-->
+    <!--      <thead>-->
+    <!--      <tr>-->
+    <!--        <th>Zeit</th>-->
+    <!--        <th>Windgeschwindigkeit</th>-->
+    <!--        <th>Windrichtung</th>-->
+    <!--        <th>Wellenhöhe</th>-->
+    <!--        <th>Wellenrichtung</th>-->
+    <!--      </tr>-->
+    <!--      </thead>-->
+    <!--      <tbody>-->
+    <!--      <tr *ngFor="let data of getFilteredDataForTable()">-->
+    <!--        <td>{{ data.time }}</td>-->
+    <!--        <td>{{ data.windSpeed }}</td>-->
+    <!--        <td>{{ data.windDirection }}</td>-->
+    <!--        <td>{{ data.waveHeight }}</td>-->
+    <!--        <td>{{ data.waveDirection }}</td>-->
+    <!--      </tr>-->
+    <!--      </tbody>-->
+    <!--    </table>-->
+
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

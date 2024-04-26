@@ -1,0 +1,187 @@
+<!--<div class="container">-->
+<!--    <div class="giveFeedack">-->
+<!--        <h2>Give feedback after your session</h2>-->
+
+<!--        <form [formGroup]="newFeedbackForm" (ngSubmit)="onSubmit()">-->
+
+<!--            <div>-->
+<!--                <label for="spotId">Spot</label>-->
+<!--                <br>-->
+<!--                <select id="spotId" formControlName="spotId">-->
+<!--                    <option *ngFor="let spot of spots" [value]="spot.id">{{ spot.name }}</option>-->
+<!--                </select>-->
+<!--            </div>-->
+
+<!--            <div>-->
+<!--                <label for="rating">Rating</label>-->
+<!--                <br>-->
+<!--                <input-->
+<!--                        id="rating"-->
+<!--                        type="range"-->
+<!--                        min="0"-->
+<!--                        max="10"-->
+<!--                        step="1"-->
+<!--                        formControlName="rating"-->
+<!--                />-->
+<!--                <span>{{ newFeedbackForm.get('rating')!.value! }}</span>-->
+<!--            </div>-->
+
+
+<!--            <div>-->
+<!--                <Label for="comment">-->
+<!--                    Comment-->
+<!--                </Label>-->
+<!--                <br>-->
+<!--                <textarea rows="4" cols="50" id="comment" type="text" formControlName="comment"></textarea>-->
+<!--            </div>-->
+
+<!--            <button class="button" type="submit"> Give Feedback</button>-->
+<!--        </form>-->
+<!--    </div>-->
+<!--    <div class="showFeedback">-->
+<!--        <h2>See the feedback and comments of your favourite Spot </h2>-->
+
+<!--        <div>-->
+<!--            <form [formGroup]="newFilterForm" (change)="filterBySpotId()">-->
+
+<!--                <div>-->
+<!--                    <label for="spot">Spot</label>-->
+<!--                    <select id="spot" formControlName="spot">-->
+<!--                        <option *ngFor="let spot of spots" [value]="spot.id">{{ spot.name }}</option>-->
+<!--                    </select>-->
+<!--                </div>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--            <svg width="400" height="400">-->
+<!--                <circle cx="200" cy="200" r="150" fill="lightgray"/>-->
+<!--                <circle cx="200" cy="200" r="100" fill="gray"/>-->
+<!--                <circle cx="200" cy="200" r="50" fill="black"/>-->
+<!--                <line-->
+<!--                        *ngFor="let condition of filteredConditions"-->
+<!--                        [attr.x1]="centerX"-->
+<!--                        [attr.y1]="centerY"-->
+<!--                        [attr.x2]="calculateX2(condition)"-->
+<!--                        [attr.y2]="calculateY2(condition)"-->
+<!--                        [style.stroke]="colorOf(condition)"-->
+<!--                        stroke-width="10"-->
+<!--                />-->
+<!--                <text *ngFor="let direction of compassDirections"-->
+<!--                      [attr.x]="calculateLabelX(direction)"-->
+<!--                      [attr.y]="calculateLabelY(direction)">-->
+<!--                    {{ direction }}-->
+<!--                </text>-->
+<!--            </svg>-->
+<!--        </div>-->
+<!--        <div *ngFor="let comment of filteredComments">-->
+<!--            <div class="comment">-->
+<!--      <span>-->
+<!--          Spot ID:-->
+<!--          {{comment.spotId}}-->
+<!--      </span>-->
+<!--                <span>-->
+<!--            Comment from:-->
+<!--                    {{comment.username}}-->
+<!--          </span>-->
+<!--                <span>-->
+<!--            on:-->
+<!--                    {{comment.date}}-->
+<!--          </span>-->
+<!--                <br>-->
+<!--                <span>-->
+<!--            Text:-->
+<!--                    {{comment.text}}-->
+<!--          </span>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--    </div>-->
+<!--</div>-->
+
+
+
+
+
+
+
+<div class="flex justify-end bg-gray-900 h-full px-4  ">
+    <div class="flex flex-wrap justify-center  space-x-4 mx-auto mt-8">
+        <div class="giveFeedback bg-gray-900 shadow-lg rounded-lg p-6 max-w-sm" style="max-height: 600px">
+            <h2 class="text-xl font-bold mb-4 text-white">Give Feedback After Your Session</h2>
+
+            <form [formGroup]="newFeedbackForm" (ngSubmit)="onSubmit()" class="space-y-4">
+                <div>
+                    <label for="spotId" class="block mb-2 text-sm font-medium text-white">Spot</label>
+                    <select id="spotId" formControlName="spotId" class="block w-full p-2 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500">
+                        <option *ngFor="let spot of spots" [value]="spot.id">{{ spot.name }}</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="rating" class="block mb-2 text-sm font-medium text-white">Rating</label>
+                    <input class="w-full h-2 rounded-lg appearance-none cursor-pointer"
+                            id="rating"
+                            type="range"
+                            min="0"
+                            max="10"
+                            step="1"
+                            formControlName="rating"
+
+                    />
+                    <span class="text-sm">{{ newFeedbackForm.get('rating')!.value! }}</span>
+                </div>
+
+                <div>
+                    <label for="comment" class="block mb-2 text-sm font-medium text-gray-900">Comment</label>
+                    <textarea id="comment" type="text" formControlName="comment" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"></textarea>
+                </div>
+
+                <button class="w-full px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50" type="submit">Give Feedback</button>
+            </form>
+        </div>
+    </div>
+
+    <div style="max-height: 600px; overflow-y: auto;" class="showFeedback bg-gray-900 shadow-lg rounded-lg p-6 max-w-md mx-auto mt-8">
+        <h2 class="text-xl font-bold mb-4 text-white">See the Feedback and Comments of Your Favourite Spot</h2>
+
+        <div>
+            <form [formGroup]="newFilterForm" (change)="filterBySpotId()" class="mb-6">
+                <div>
+                    <label for="spot" class="block mb-2 text-sm font-medium text-white">Spot</label>
+                    <select id="spot" formControlName="spot" class="block w-full p-2 text-sm bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500">
+                        <option *ngFor="let spot of spots" [value]="spot.id">{{ spot.name }}</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+
+        <div class="flex justify-center mb-6">
+            <svg width="400" height="400">
+                <circle cx="200" cy="200" r="150" fill="lightgray"/>
+                <circle cx="200" cy="200" r="100" fill="gray"/>
+                <circle cx="200" cy="200" r="50" fill="black"/>
+                <line *ngFor="let condition of filteredConditions"
+                      [attr.x1]="centerX"
+                      [attr.y1]="centerY"
+                      [attr.x2]="calculateX2(condition)"
+                      [attr.y2]="calculateY2(condition)"
+                      [style.stroke]="colorOf(condition)"
+                      stroke-width="10"/>
+                <text *ngFor="let direction of compassDirections"
+                      [attr.x]="calculateLabelX(direction)"
+                      [attr.y]="calculateLabelY(direction)" class="compass-direction">
+                    {{ direction }}
+                </text>
+            </svg>
+        </div>
+
+        <div *ngFor="let comment of filteredComments" class="mt-4">
+            <div class="comment p-4 bg-gray-100 rounded-lg">
+
+                <span class="block ">Comment from: {{ comment.username }}</span>
+                <span class="block ">on: {{ comment.date }}</span>
+                <span class="block mt-2">{{ comment.text }}</span>
+            </div>
+        </div>
+    </div>
+    </div>
